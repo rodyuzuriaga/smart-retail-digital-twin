@@ -1,0 +1,9 @@
+
+{
+  "name": "Tailoy Smart Warehouse Monitor",
+  "description": "A high-fidelity dashboard for monitoring a smart retail warehouse integrating RFID, AR, AMRs, and Digital Twins.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
