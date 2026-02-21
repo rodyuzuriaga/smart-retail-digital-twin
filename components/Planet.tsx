@@ -69,7 +69,6 @@ const TaiLoyLogo = React.memo(() => {
         loader.load(
             '/tailoy.jpeg',
             (loadedTexture) => {
-                console.log('Texture loaded successfully:', loadedTexture);
                 // Configure texture to show the full image without repetition
                 loadedTexture.wrapS = THREE.ClampToEdgeWrapping;
                 loadedTexture.wrapT = THREE.ClampToEdgeWrapping;
@@ -78,9 +77,7 @@ const TaiLoyLogo = React.memo(() => {
                 loadedTexture.needsUpdate = true;
                 setTexture(loadedTexture);
             },
-            (progress) => {
-                console.log('Texture loading progress:', progress);
-            },
+            undefined, // Progress callback removed
             (err: any) => {
                 console.error('Error loading texture:', err);
                 setError(err.message || 'Unknown error');
@@ -89,7 +86,6 @@ const TaiLoyLogo = React.memo(() => {
     }, []);
 
     if (error) {
-        console.log('Texture loading error:', error);
         return (
             <mesh position={[0, 25, -78.5]} rotation={[0, 0, 0]}>
                 <planeGeometry args={[25.7, 25]} />
@@ -99,7 +95,6 @@ const TaiLoyLogo = React.memo(() => {
     }
 
     if (!texture) {
-        console.log('Texture still loading...');
         return (
             <mesh position={[0, 25, -78.5]} rotation={[0, 0, 0]}>
                 <planeGeometry args={[25.7, 25]} />

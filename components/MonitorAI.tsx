@@ -41,7 +41,7 @@ export const AIStudio: React.FC = () => {
       // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
       
       // Fallback mock check
-      console.log('Generating with key:', apiKey);
+      // Generating with API Key present
       
       // Mock result for demo (to avoid breaking if SDK signature is wrong)
       setTimeout(() => {
