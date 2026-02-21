@@ -1,9 +1,19 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { GenerationResponse } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Using VITE_API_KEY from environment variables
+const apiKey = import.meta.env.VITE_API_KEY || '';
+
+// Initialize only if key exists to prevent crash on load, handle error at call time
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const generateWorldData = async (prompt?: string): Promise<GenerationResponse> => {
+  if (!ai) {
+    console.warn("API Key not found. Please set VITE_API_KEY in your environment.");
+    // Return default or throw error depending on desired behavior
+    throw new Error("API Key missing");
+  }
+
   try {
     const userPrompt = prompt || "Industrial warehouse interior";
     
